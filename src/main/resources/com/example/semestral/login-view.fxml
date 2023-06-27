@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.LoginController">
+   <top>
+      <Pane prefHeight="100.0" prefWidth="1400.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
+         <AnchorPane layoutY="-9.0" prefHeight="85.0" prefWidth="195.0">
+            <effect>
+               <ImageInput>
+                  <source>
+                     <Image url="@../../../Images/STOKIN__2_-removebg-preview.png" />
+                  </source>
+               </ImageInput>
+            </effect>
+         </AnchorPane>
+         <Label layoutX="13.0" layoutY="55.0" prefHeight="30.0" prefWidth="519.0" text="A new way to manage your inventory" textFill="#c4c4c4">
+            <font>
+               <Font name="Yu Gothic Regular" size="24.0" />
+            </font>
+         </Label>
+      </Pane>
+   </top>
+   <left>
+      <AnchorPane prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <Separator prefHeight="20.0" prefWidth="1000.0" visible="false" VBox.vgrow="ALWAYS" />
+         <Label prefHeight="210.0" prefWidth="210.0" text="Label" VBox.vgrow="NEVER">
+            <effect>
+               <ImageInput>
+                  <source>
+                     <Image url="@../../../Images/avatarBlue.png" />
+                  </source>
+               </ImageInput>
+            </effect>
+         </Label>
+         <Separator prefHeight="20.0" prefWidth="600.0" visible="false" VBox.vgrow="ALWAYS" />
+         <TextField fx:id="usuarioField" onKeyReleased="#desabilitaLogin" prefHeight="50.0" prefWidth="1366.0" promptText="Usuário" VBox.vgrow="SOMETIMES">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </TextField>
+         <Separator opacity="0.0" prefHeight="20.0" prefWidth="1400.0" VBox.vgrow="ALWAYS" />
+         <PasswordField fx:id="senhaField" onKeyReleased="#desabilitaLogin" prefHeight="50.0" prefWidth="800.0" promptText="Senha" VBox.vgrow="SOMETIMES">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </PasswordField>
+         <Separator prefHeight="20.0" prefWidth="1000.0" visible="false" VBox.vgrow="ALWAYS" />
+         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="1000.0" VBox.vgrow="NEVER">
+            <Pane prefHeight="27.0" prefWidth="94.0" HBox.hgrow="ALWAYS" />
+            <Pane prefHeight="28.0" prefWidth="305.0" HBox.hgrow="NEVER">
+               <Label layoutX="2.0" layoutY="2.0" prefHeight="27.0" prefWidth="196.0" text="Problemas com o login?" textFill="WHITE">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Label>
+               <Hyperlink layoutX="200.0" layoutY="-2.0" onAction="#esqueceuSenha" prefHeight="35.0" prefWidth="108.0" text="Clique aqui!">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Hyperlink>
+            </Pane>
+         </HBox>
+         <Separator prefHeight="20.0" prefWidth="200.0" visible="false" VBox.vgrow="ALWAYS" />
+         <Label fx:id="checkPasswordLabel" prefHeight="18.0" prefWidth="223.0" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="NEVER">
+            <font>
+               <Font name="Verdana" size="14.0" />
+            </font>
+         </Label>
+         <Separator prefHeight="20.0" prefWidth="1000.0" visible="false" VBox.vgrow="ALWAYS" />
+         <Button fx:id="buttomEntrar" alignment="CENTER" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#entrar" prefHeight="48.0" prefWidth="216.0" style="-fx-background-color: #ffd555;" text="Login" VBox.vgrow="NEVER">
+            <font>
+               <Font name="Verdana Bold" size="24.0" />
+            </font>
+         </Button>
+         <Separator prefHeight="20.0" prefWidth="600.0" visible="false" VBox.vgrow="ALWAYS" />
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
+         <Label prefHeight="100.0" prefWidth="667.0" style="-fx-background-color: #355186;" text="CEDUP Timbó&#10;Desenvolvido por Lucas Mickael Moratelli e Gian Carlos Kotkoski&#10;INFO-22" textFill="#a8ccff" HBox.hgrow="NEVER">
+            <font>
+               <Font name="Verdana Bold" size="18.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </Label>
+         <Pane prefHeight="100.0" prefWidth="139.0" HBox.hgrow="ALWAYS" />
+      </HBox>
+   </bottom>
+</BorderPane>

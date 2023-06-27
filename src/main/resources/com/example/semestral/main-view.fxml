@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.MainController">
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
+         <Pane prefHeight="200.0" prefWidth="200.0">
+            <Label layoutX="22.0" layoutY="75.0" text="Sair">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#sair" prefHeight="73.0" prefWidth="44.0" text="Button">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../Images/exitIcon.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+         </Pane>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="504.0">
+            <effect>
+               <ImageInput>
+                  <source>
+                     <Image url="@../../../Images/stokinLogo.png" />
+                  </source>
+               </ImageInput>
+            </effect>
+            <VBox.margin>
+               <Insets top="-100.0" />
+            </VBox.margin>
+         </AnchorPane>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <Button fx:id="forncecedor" mnemonicParsing="false" onAction="#fornecedores" prefHeight="60.0" prefWidth="220.0" style="-fx-background-color: #ffd555;" text="Fornecedores">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="20.0" visible="false" />
+            <Button mnemonicParsing="false" onAction="#estoque" prefHeight="60.0" prefWidth="220.0" style="-fx-background-color: #ffd555;" text="Estoque">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="20.0" visible="false" />
+            <Button fx:id="compras" mnemonicParsing="false" onAction="#compras" prefHeight="60.0" prefWidth="220.0" style="-fx-background-color: #ffd555;" text="Compras">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Button>
+         </HBox>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
+         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="15.0" visible="false" HBox.hgrow="NEVER" />
+         <Label text="Menu Principal" textFill="#ffd555" HBox.hgrow="NEVER">
+            <font>
+               <Font name="Verdana Bold" size="36.0" />
+            </font>
+         </Label>
+         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="379.0" visible="false" HBox.hgrow="ALWAYS" />
+         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="40.0" text="Button" HBox.hgrow="NEVER">
+            <effect>
+               <ImageInput>
+                  <source>
+                     <Image url="file:/C:/Users/lucas/OneDrive/Documentos/CEDUP/Semestre%202/Projeto%20Semestral/stokin_v1.1%20-%20Copia/src/main/resources/Images/notification.png" />
+                  </source>
+               </ImageInput>
+            </effect>
+         </Button>
+         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="15.0" visible="false" HBox.hgrow="NEVER" />
+      </HBox>
+   </top>
+</BorderPane>
