@@ -14,11 +14,11 @@ public class QuantidadeModalController {
         HelloApplication.closeCurrentWindow();
     }
 
-    @FXML
-    public void salvar() {
-        Produto novoProduto = new Produto();
-        try {
-            novoProduto.quantidade = Integer.parseInt(quantidadeField.getText());
-        }
-    }
+//    @FXML
+//    public void salvar() {
+//        Produto novoProduto = new Produto();
+//        try {
+//            novoProduto.quantidade = Integer.parseInt(quantidadeField.getText());
+//        }
+//    }
 }

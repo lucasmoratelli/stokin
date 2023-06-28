@@ -11,7 +11,7 @@ public class ConnectionSingleton {
     public static Connection getConnection() throws SQLException {
         if (connection == null) {
             connection = DriverManager.getConnection( //
-                    "jdbc:mysql://localhost:3306/stokin", //
+                    "jdbc:mysql://localhost:3306/db_stokin_v2.0", //
                     "root", //
                     "");
         }
