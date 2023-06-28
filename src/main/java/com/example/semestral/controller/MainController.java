@@ -36,6 +36,10 @@ public class MainController implements Initializable {
     public void compras() throws IOException {
         HelloApplication.setRoot("compras-view");
     }
+    @FXML
+    public void entrada() throws IOException {
+        HelloApplication.showModal("quantidade-modal-view");
+    }
 
     @FXML
     public void sair() throws IOException {
