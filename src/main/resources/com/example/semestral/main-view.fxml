@@ -78,11 +78,11 @@
             </font>
          </Label>
          <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="379.0" visible="false" HBox.hgrow="ALWAYS" />
-         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="40.0" text="Button" HBox.hgrow="NEVER">
+         <Button mnemonicParsing="false" onAction="#abrirNotificacoes" prefHeight="43.0" prefWidth="40.0" text="Button" HBox.hgrow="NEVER">
             <effect>
                <ImageInput>
                   <source>
-                     <Image url="file:/C:/Users/lucas/OneDrive/Documentos/CEDUP/Semestre%202/Projeto%20Semestral/stokin_v1.1%20-%20Copia/src/main/resources/Images/notification.png" />
+                     <Image url="@../../../Images/notification.png" />
                   </source>
                </ImageInput>
             </effect>
