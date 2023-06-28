@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView prefHeight="335.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+      <TableView prefHeight="348.0" prefWidth="600.0" VBox.vgrow="SOMETIMES">
         <columns>
           <TableColumn prefWidth="75.0" text="Código" />
           <TableColumn prefWidth="524.0" text="Notificação" />
         </columns>
       </TableView>
-      <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="106.0" text="Button">
-         <effect>
-            <ImageInput>
-               <source>
-                  <Image url="file:/C:/Users/lucas/OneDrive/Documentos/CEDUP/Semestre%202/Projeto%20Semestral/stokin_v1.1%20-%20Copia/src/main/resources/Images/delete.png" />
-               </source>
-            </ImageInput>
-         </effect>
-      </Button>
+      <AnchorPane prefHeight="56.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="509.0" layoutY="12.0" prefHeight="17.0" prefWidth="84.0" text="Excluir" textFill="#c64444">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Button layoutX="468.0" layoutY="8.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="125.0" text="Button">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="file:/C:/Users/lucas/OneDrive/Documentos/CEDUP/Semestre%202/Projeto%20Semestral/stokin_v1.1%20-%20Copia/src/main/resources/Images/delete.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>
