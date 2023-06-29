@@ -58,13 +58,14 @@ public class ProdutoModalController implements Initializable {
             novoProduto.fornecedorID = Integer.parseInt(fornecedorIDField.getText());
             novoProduto.quantidade = Integer.parseInt(quantidadeField.getText());
             novoProduto.quantidadeMinima = Integer.parseInt(quantidadeMinimaField.getText());
-            if(!precoField.getText().matches("\\d+\\.?\\d+")) {
+            if(precoField.getText().matches("\\d+\\.?\\d+")) {
                 novoProduto.preco = Double.parseDouble(precoField.getText());
+                produto = novoProduto;
+                HelloApplication.closeCurrentWindow();
             }else {
-                labelCheckYourFields.setText("O preço deve ser no formato '9999.99'");
+                labelCheckYourFields.setText("O preço deve ser no formato '999999.99'");
             }
-            produto = novoProduto;
-            HelloApplication.closeCurrentWindow();
+
         }catch (Exception e) {
             labelCheckYourFields.setText("Todos os campos são obrigatórios");
         }
