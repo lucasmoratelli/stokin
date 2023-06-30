@@ -57,6 +57,9 @@ public class ProdutoController implements Initializable {
     @FXML
     Button excuir;
 
+    @FXML
+    Button entraSaiButtom;
+
     //Essa parte é executada ao iniciar a classe
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -146,10 +149,11 @@ public class ProdutoController implements Initializable {
 
     //método que desabilita botões excluir e editar enquanto nenhum produto da tabela estiver selecionado
     @FXML
-    public void desabilitarBotoes() {
+    public void habilitarBotoes() {
         BooleanBinding algoSelecionado = tabelaProdutos.getSelectionModel().selectedItemProperty().isNull();
         excuir.disableProperty().bind(algoSelecionado);
         editar.disableProperty().bind(algoSelecionado);
+        entraSaiButtom.disableProperty().bind(algoSelecionado);
     }
 
     //método que exclui o item selecionado da tabela e BD
@@ -168,5 +172,21 @@ public class ProdutoController implements Initializable {
             ProdutoDAO produtoDAO = new ProdutoDAO();
             produtoDAO.delete(produtoSelecionado);
         }
+    }
+    @FXML
+    public void entraSaiEstoque() throws SQLException, IOException {
+        produto = null; //define variável global 'produto' como nula para prevenção de bugs
+        Produto produtoSelecionado = tabelaProdutos.getSelectionModel().getSelectedItem(); //define uma váriavel Produto para inserir o item selecionado
+        produto = produtoSelecionado; //coloca essa variável dentro da váriável global produto
+        HelloApplication.showModal("quantidade-modal-view");
+
+        produtoSelecionado.quantidade = produto.quantidade;
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        produtoDAO.update(produto);
+        tabelaProdutos.refresh();
+    }
+    @FXML
+    public void pesquisa() {
+
     }
 }

@@ -77,7 +77,7 @@
             </cursor>
          </Button>
          <Separator prefHeight="20.0" prefWidth="282.0" visible="false" />
-         <Button mnemonicParsing="false" onAction="#entraSaiEstoque" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="+/-">
+         <Button fx:id="entraSaiButtom" disable="true" mnemonicParsing="false" onAction="#entraSaiEstoque" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="+/-">
             <font>
                <Font name="Verdana Bold" size="25.0" />
             </font>
@@ -88,7 +88,7 @@
       </VBox>
    </right>
    <center>
-      <TableView fx:id="tabelaProdutos" onMouseClicked="#desabilitarBotoes" onSort="#desabilitarBotoes" BorderPane.alignment="CENTER">
+      <TableView fx:id="tabelaProdutos" onMouseClicked="#habilitarBotoes" onSort="#habilitarBotoes" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn fx:id="colunaProdutoID" editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Código" />
             <TableColumn fx:id="colunaMarca" editable="false" prefWidth="125.0" resizable="false" text="Marca" visible="false" />

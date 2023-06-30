@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.QuantidadeModalController">
-
+<AnchorPane prefHeight="265.0" prefWidth="200.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.QuantidadeModalController">
+   <children>
+      <TextField fx:id="quantidadeField" layoutX="62.0" layoutY="36.0" prefHeight="26.0" prefWidth="75.0" />
+      <TextField fx:id="quantidadeNoEstoqueField" disable="true" editable="false" layoutX="62.0" layoutY="134.0" prefHeight="26.0" prefWidth="75.0" />
+      <Button layoutX="62.0" layoutY="73.0" mnemonicParsing="false" onAction="#entrada" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: #ffd555;" text="+">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutY="13.0" prefHeight="22.0" prefWidth="200.0" text="Quantidade Entrada/Saída" textAlignment="CENTER" textFill="#ffd555">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutY="111.0" prefHeight="22.0" prefWidth="200.0" text="Quantidade em Estoque" textAlignment="CENTER" textFill="#ffd555">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="8.0" layoutY="215.0" mnemonicParsing="false" onAction="#salvar" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: #ffd555;" text="Salvar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="106.0" layoutY="73.0" mnemonicParsing="false" onAction="#saida" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: #ffd555;" text="-">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Separator layoutY="200.0" prefHeight="3.0" prefWidth="200.0" />
+      <Label fx:id="labelCheckYourFields" alignment="CENTER" layoutY="172.0" prefHeight="18.0" prefWidth="200.0" text="Label" textFill="RED" />
+      <Button layoutX="106.0" layoutY="215.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: #ffd555;" text="Cancelar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
