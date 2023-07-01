@@ -44,10 +44,13 @@ public class ProdutoModalController implements Initializable {
     Label labelCheckYourFields;
 
     @FXML
+    Label labelQtd;
+
+    @FXML
     public void salvar() {
 
         Produto novoProduto = new Produto();
-        try {
+//        try {
             if(!produtoIDField.getText().isBlank()) {
                 novoProduto.produtoID = Integer.parseInt(produtoIDField.getText());
             }
@@ -66,9 +69,10 @@ public class ProdutoModalController implements Initializable {
                 labelCheckYourFields.setText("O preço deve ser no formato '999999.99'");
             }
 
-        }catch (Exception e) {
-            labelCheckYourFields.setText("Todos os campos são obrigatórios");
-        }
+//        }catch (Exception e) {
+//            labelCheckYourFields.setText("Todos os campos são obrigatórios");
+//            System.out.println(e);
+//        }
     }
     @FXML
     public void cancelar() {
@@ -115,6 +119,9 @@ public class ProdutoModalController implements Initializable {
         precoField.textProperty().addListener((o, oldValue, newValue) -> {
             precoField.setText(newValue.replaceAll("[^\\d.]", ""));
         });
+
+        quantidadeField.setDisable(ProdutoController.disableQtd);
+        labelQtd.setDisable(ProdutoController.disableQtd);
     }
 }
 

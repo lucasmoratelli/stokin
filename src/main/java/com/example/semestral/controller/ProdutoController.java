@@ -58,6 +58,9 @@ public class ProdutoController implements Initializable {
     Button excuir;
 
     @FXML
+    Button novo;
+
+    @FXML
     Button entraSaiButtom;
 
     //Essa parte é executada ao iniciar a classe
@@ -65,10 +68,9 @@ public class ProdutoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //implementação dos níveis de acesso, impossibilitando um usuário da Produção de editar ou excluir itens da lista
-        if (AcessLevelSingleton.canAcess()) {
-            editar.setVisible(false);
-            excuir.setVisible(false);
-        }
+        editar.setVisible(!AcessLevelSingleton.canAcess());
+        excuir.setVisible(!AcessLevelSingleton.canAcess());
+        novo.setVisible(!AcessLevelSingleton.canAcess());
 
         colunaProdutoID.setCellValueFactory(new PropertyValueFactory<>("produtoID"));
         colunaFornecedorID.setCellValueFactory(new PropertyValueFactory<>("fornecedorID"));
@@ -88,6 +90,8 @@ public class ProdutoController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 
     //método para adicionar novo produto na tabela
@@ -118,8 +122,11 @@ public class ProdutoController implements Initializable {
     }
 
     //método para editar produto
+
+    public static boolean disableQtd;
     @FXML
     public void editar() throws IOException, SQLException {
+        disableQtd = true;
         produto = null; //define variável global 'produto' como nula para prevenção de bugs
         Produto produtoSelecionado = tabelaProdutos.getSelectionModel().getSelectedItem(); //define uma váriavel Produto para inserir o item selecionado
         produto = produtoSelecionado; //coloca essa variável dentro da váriável global produto
@@ -176,11 +183,9 @@ public class ProdutoController implements Initializable {
     @FXML
     public void entraSaiEstoque() throws SQLException, IOException {
         produto = null; //define variável global 'produto' como nula para prevenção de bugs
-        Produto produtoSelecionado = tabelaProdutos.getSelectionModel().getSelectedItem(); //define uma váriavel Produto para inserir o item selecionado
-        produto = produtoSelecionado; //coloca essa variável dentro da váriável global produto
+        produto = tabelaProdutos.getSelectionModel().getSelectedItem(); //coloca essa variável dentro da váriável global produto
         HelloApplication.showModal("quantidade-modal-view");
 
-        produtoSelecionado.quantidade = produto.quantidade;
         ProdutoDAO produtoDAO = new ProdutoDAO();
         produtoDAO.update(produto);
         tabelaProdutos.refresh();

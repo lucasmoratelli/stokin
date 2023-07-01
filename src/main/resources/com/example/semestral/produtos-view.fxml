@@ -50,7 +50,7 @@
    </bottom>
    <right>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Button mnemonicParsing="false" onAction="#novo" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="Novo">
+         <Button fx:id="novo" mnemonicParsing="false" onAction="#novo" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="Novo">
             <font>
                <Font name="Verdana Bold" size="18.0" />
             </font>

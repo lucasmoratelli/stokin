@@ -12,12 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.NotificacaoModalController">
    <children>
-      <TableView prefHeight="348.0" prefWidth="600.0" VBox.vgrow="SOMETIMES">
+      <TableView fx:id="tabelaNotificacao" prefHeight="348.0" prefWidth="600.0" VBox.vgrow="SOMETIMES">
         <columns>
-          <TableColumn prefWidth="75.0" text="Código" />
-          <TableColumn prefWidth="524.0" text="Notificação" />
+            <TableColumn fx:id="colunaCodigoNotifica" prefWidth="190.39990234375" text="Column X" visible="false" />
+          <TableColumn fx:id="colunaCodigoProduto" prefWidth="171.20001220703125" text="Código" />
+          <TableColumn fx:id="colunaNotificacao" prefWidth="426.4000244140625" text="Notificação" />
         </columns>
       </TableView>
       <AnchorPane prefHeight="56.0" prefWidth="600.0">
@@ -27,11 +28,11 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Button layoutX="468.0" layoutY="8.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="125.0" text="Button">
+            <Button fx:id="excluir" layoutX="468.0" layoutY="8.0" mnemonicParsing="false" onAction="#excluir" prefHeight="41.0" prefWidth="125.0" text="Button">
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/C:/Users/lucas/OneDrive/Documentos/CEDUP/Semestre%202/Projeto%20Semestral/stokin_v1.1%20-%20Copia/src/main/resources/Images/delete.png" />
+                        <Image url="@/Images/delete.png" />
                      </source>
                   </ImageInput>
                </effect>

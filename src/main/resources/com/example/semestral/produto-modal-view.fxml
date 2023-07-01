@@ -86,7 +86,7 @@
             <TextField fx:id="descricaoField" alignment="TOP_LEFT" prefHeight="100.0" prefWidth="630.0" promptText="Descrição" />
          </HBox>
          <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="1000.0" VBox.vgrow="NEVER">
-            <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" text="Quantidade" textFill="WHITE" HBox.hgrow="NEVER">
+            <Label fx:id="labelQtd" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" text="Quantidade" textFill="WHITE" HBox.hgrow="NEVER">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
