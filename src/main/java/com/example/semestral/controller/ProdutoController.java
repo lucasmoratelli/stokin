@@ -97,6 +97,7 @@ public class ProdutoController implements Initializable {
     //método para adicionar novo produto na tabela
     @FXML
     public void novo() throws IOException, SQLException {
+        disableQtd = false;
         produto = null; //define variável global 'produto' como nula para prevenção de bugs
         HelloApplication.showModal("produto-modal-view"); //abre o modal de cadastro de produto
 
