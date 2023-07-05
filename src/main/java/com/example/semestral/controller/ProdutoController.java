@@ -64,7 +64,7 @@ public class ProdutoController implements Initializable {
     Button editar;
 
     @FXML
-    Button excuir;
+    Button excluir;
 
     @FXML
     Button novo;
@@ -78,7 +78,7 @@ public class ProdutoController implements Initializable {
 
         //implementação dos níveis de acesso, impossibilitando um usuário da Produção de editar ou excluir itens da lista
         editar.setVisible(!AcessLevelSingleton.canAcess());
-        excuir.setVisible(!AcessLevelSingleton.canAcess());
+        excluir.setVisible(!AcessLevelSingleton.canAcess());
         novo.setVisible(!AcessLevelSingleton.canAcess());
 
         colunaProdutoID.setCellValueFactory(new PropertyValueFactory<>("produtoID"));
@@ -180,7 +180,7 @@ public class ProdutoController implements Initializable {
     @FXML
     public void habilitarBotoes() {
         BooleanBinding algoSelecionado = tabelaProdutos.getSelectionModel().selectedItemProperty().isNull();
-        excuir.disableProperty().bind(algoSelecionado);
+        excluir.disableProperty().bind(algoSelecionado);
         editar.disableProperty().bind(algoSelecionado);
         entraSaiButtom.disableProperty().bind(algoSelecionado);
     }

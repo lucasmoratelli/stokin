@@ -4,6 +4,7 @@ import com.example.semestral.model.Notificacao;
 import com.example.semestral.model.NotificacaoDAO;
 import com.example.semestral.model.Produto;
 import com.example.semestral.model.ProdutoDAO;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -52,5 +53,10 @@ public class NotificacaoModalController  implements Initializable{
             NotificacaoDAO notificacaoDAO = new NotificacaoDAO();
             notificacaoDAO.delete(notificacaoSelecionada);
         }
+    }
+    @FXML
+    public void habilitarBotoes() {
+        BooleanBinding algoSelecionado = tabelaNotificacao.getSelectionModel().selectedItemProperty().isNull();
+        excluir.disableProperty().bind(algoSelecionado);
     }
 }

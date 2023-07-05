@@ -36,10 +36,6 @@ public class MainController implements Initializable {
     public void compras() throws IOException {
         HelloApplication.setRoot("compras-view");
     }
-    @FXML
-    public void entrada() throws IOException {
-        HelloApplication.showModal("quantidade-modal-view");
-    }
 
     @FXML
     public void sair() throws IOException {
@@ -56,6 +52,10 @@ public class MainController implements Initializable {
     public void abrirNotificacoes() throws IOException {
         HelloApplication.showModal("notificacao-modal-view");
     }
+    @FXML
+    public void config() throws IOException {
+        HelloApplication.showModal("config-modal-view");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,4 +64,5 @@ public class MainController implements Initializable {
             compras.setVisible(false);
         }
     }
+
 }

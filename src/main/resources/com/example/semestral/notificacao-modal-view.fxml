@@ -12,7 +12,7 @@
 
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.NotificacaoModalController">
    <children>
-      <TableView fx:id="tabelaNotificacao" prefHeight="348.0" prefWidth="600.0" VBox.vgrow="SOMETIMES">
+      <TableView fx:id="tabelaNotificacao" onMouseClicked="#habilitarBotoes" prefHeight="348.0" prefWidth="600.0" VBox.vgrow="SOMETIMES">
         <columns>
             <TableColumn fx:id="colunaCodigoNotifica" prefWidth="190.39990234375" text="Column X" visible="false" />
           <TableColumn fx:id="colunaCodigoProduto" prefWidth="171.20001220703125" text="Código do Produto" />
@@ -21,7 +21,7 @@
       </TableView>
       <AnchorPane prefHeight="56.0" prefWidth="600.0">
          <children>
-            <Button fx:id="excluir" layoutX="546.0" layoutY="6.0" mnemonicParsing="false" onAction="#excluir" prefHeight="42.0" prefWidth="40.0" text="Button">
+            <Button fx:id="excluir" disable="true" layoutX="546.0" layoutY="6.0" mnemonicParsing="false" onAction="#excluir" prefHeight="42.0" prefWidth="40.0" text="Button">
                <effect>
                   <ImageInput>
                      <source>

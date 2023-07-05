@@ -68,7 +68,7 @@
             </cursor>
          </Button>
          <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
-         <Button fx:id="excuir" disable="true" mnemonicParsing="false" onAction="#excluir" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ff0000;" text="Excluir">
+         <Button fx:id="excluir" disable="true" mnemonicParsing="false" onAction="#excluir" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ff0000;" text="Excluir">
             <font>
                <Font name="Verdana Bold" size="18.0" />
             </font>
