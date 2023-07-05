@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="265.0" prefWidth="200.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.QuantidadeModalController">
    <children>
-      <Button layoutX="62.0" layoutY="73.0" mnemonicParsing="false" onAction="#entrada" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: #ffd555;" text="+">
+      <Button layoutX="103.0" layoutY="73.0" mnemonicParsing="false" onAction="#entrada" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: #ffd555;" text="+">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -29,7 +29,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="106.0" layoutY="73.0" mnemonicParsing="false" onAction="#saida" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: #ffd555;" text="-">
+      <Button layoutX="68.0" layoutY="73.0" mnemonicParsing="false" onAction="#saida" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: #ffd555;" text="-">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -44,7 +44,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="quantidadeField" alignment="CENTER" layoutX="26.0" layoutY="35.0" promptText="Apenas números!" />
+      <TextField fx:id="quantidadeField" alignment="CENTER" layoutX="26.0" layoutY="35.0" promptText="Apenas números!" text="1" />
       <TextField fx:id="quantidadeNoEstoqueField" disable="true" layoutX="26.0" layoutY="133.0" />
    </children>
 </AnchorPane>

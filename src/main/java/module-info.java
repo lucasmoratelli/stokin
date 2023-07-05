@@ -4,6 +4,7 @@ module com.example.semestral {
     requires java.desktop;
     requires qrgen;
     requires java.sql;
+    requires barbecue;
 
 
     opens com.example.semestral to javafx.fxml;

@@ -50,7 +50,7 @@ public class ProdutoModalController implements Initializable {
     public void salvar() {
 
         Produto novoProduto = new Produto();
-//        try {
+        try {
             if(!produtoIDField.getText().isBlank()) {
                 novoProduto.produtoID = Integer.parseInt(produtoIDField.getText());
             }
@@ -69,26 +69,14 @@ public class ProdutoModalController implements Initializable {
                 labelCheckYourFields.setText("O preço deve ser no formato '999999.99'");
             }
 
-//        }catch (Exception e) {
-//            labelCheckYourFields.setText("Todos os campos são obrigatórios");
-//            System.out.println(e);
-//        }
+        }catch (Exception e) {
+           labelCheckYourFields.setText("Todos os campos são obrigatórios");
+           System.out.println(e);
+        }
     }
     @FXML
     public void cancelar() {
         HelloApplication.closeCurrentWindow();
-    }
-
-    @FXML
-    public void help() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeight(500);
-        alert.setTitle("Informação");
-        alert.setHeaderText("Preenchimento adequado dos campos");
-        alert.setContentText("- Nenhum campo pode estar vazio!\n- Nos campos 'Código do Fornecedor', 'Quantidade' e 'Quantidade Mínima' só é possível inserir números inteiros sem espaço entre os algarismos\n- No campo 'Preço' é possível inserir números inteiros ou decimais utilizando um ponto ('.') para separar casas inteiras de casas decimais, não deve-se inserir espaços entre os números!;\n- Aos demais campos, podem ser preenchidos qualquer forma, desde que tenha conteúdo neles");
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            alert.close();
-        }
     }
 
     @Override

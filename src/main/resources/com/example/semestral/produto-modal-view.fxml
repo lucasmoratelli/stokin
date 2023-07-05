@@ -14,11 +14,6 @@
 <BorderPane prefHeight="355.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.ProdutoModalController">
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
-         <Button mnemonicParsing="false" onAction="#help" prefHeight="40.0" prefWidth="41.0" style="-fx-background-color: #70a0cf;" text="i">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
          <Label fx:id="labelCheckYourFields" alignment="CENTER" prefHeight="30.0" prefWidth="512.0" textFill="#bf4343">
             <font>
                <Font name="System Bold" size="20.0" />

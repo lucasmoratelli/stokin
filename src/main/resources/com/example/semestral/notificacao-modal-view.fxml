@@ -3,36 +3,29 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #355186;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.NotificacaoModalController">
    <children>
       <TableView fx:id="tabelaNotificacao" prefHeight="348.0" prefWidth="600.0" VBox.vgrow="SOMETIMES">
         <columns>
             <TableColumn fx:id="colunaCodigoNotifica" prefWidth="190.39990234375" text="Column X" visible="false" />
-          <TableColumn fx:id="colunaCodigoProduto" prefWidth="171.20001220703125" text="Código" />
+          <TableColumn fx:id="colunaCodigoProduto" prefWidth="171.20001220703125" text="Código do Produto" />
           <TableColumn fx:id="colunaNotificacao" prefWidth="426.4000244140625" text="Notificação" />
         </columns>
       </TableView>
       <AnchorPane prefHeight="56.0" prefWidth="600.0">
          <children>
-            <Label layoutX="509.0" layoutY="12.0" prefHeight="17.0" prefWidth="84.0" text="Excluir" textFill="#c64444">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Button fx:id="excluir" layoutX="468.0" layoutY="8.0" mnemonicParsing="false" onAction="#excluir" prefHeight="41.0" prefWidth="125.0" text="Button">
+            <Button fx:id="excluir" layoutX="546.0" layoutY="6.0" mnemonicParsing="false" onAction="#excluir" prefHeight="42.0" prefWidth="40.0" text="Button">
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="@/Images/delete.png" />
+                        <Image url="@../../../Images/delete.png" />
                      </source>
                   </ImageInput>
                </effect>

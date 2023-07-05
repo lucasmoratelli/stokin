@@ -9,12 +9,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import net.sourceforge.barbecue.Barcode;
+import net.sourceforge.barbecue.BarcodeException;
+import net.sourceforge.barbecue.BarcodeFactory;
+import net.sourceforge.barbecue.BarcodeImageHandler;
+import net.sourceforge.barbecue.output.OutputException;
 
 
 import static com.example.semestral.controller.ProdutoModalController.produto;
@@ -96,7 +105,7 @@ public class ProdutoController implements Initializable {
 
     //método para adicionar novo produto na tabela
     @FXML
-    public void novo() throws IOException, SQLException {
+    public void novo() throws IOException, SQLException, OutputException, BarcodeException {
         disableQtd = false;
         produto = null; //define variável global 'produto' como nula para prevenção de bugs
         HelloApplication.showModal("produto-modal-view"); //abre o modal de cadastro de produto
@@ -107,6 +116,18 @@ public class ProdutoController implements Initializable {
             if(produtoDAO.checkFornecedor(produto.fornecedorID)) {
                 tabelaProdutos.getItems().add(produto);
                 produtoDAO.insert(produto);
+                Barcode bc = BarcodeFactory.createCode128(String.valueOf(produto.produtoID));
+                bc.setBarHeight(60);
+                bc.setBarWidth(2);
+
+                //cria o arquivo
+                File file = new File("C:\\Users\\lucas\\Barcodes\\" + produto.produtoID + ".png");
+                file.createNewFile();
+
+                //grava o conte[udoi do codigo de barras
+                try (OutputStream outputStream = new FileOutputStream(file)) {
+                    BarcodeImageHandler.writePNG(bc, outputStream);
+                }
             } else {
                 //exibe mensagem de erro se o fornecedor não existir
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
