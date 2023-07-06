@@ -77,7 +77,7 @@
                <Font name="Verdana Bold" size="36.0" />
             </font>
          </Label>
-         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="379.0" visible="false" HBox.hgrow="ALWAYS" />
+         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="0.0" visible="false" HBox.hgrow="ALWAYS" />
          <Button mnemonicParsing="false" onAction="#abrirNotificacoes" prefHeight="43.0" prefWidth="40.0" text="Button" HBox.hgrow="NEVER">
             <effect>
                <ImageInput>
@@ -87,7 +87,17 @@
                </ImageInput>
             </effect>
          </Button>
-         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="15.0" visible="false" HBox.hgrow="NEVER" />
+         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="42.0" visible="false" HBox.hgrow="NEVER" />
+         <Button mnemonicParsing="false" onAction="#config" prefHeight="43.0" prefWidth="40.0" text="Button">
+            <effect>
+               <ImageInput>
+                  <source>
+                     <Image url="@../../../Images/config2.png" />
+                  </source>
+               </ImageInput>
+            </effect>
+         </Button>
+         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="26.0" visible="false" />
       </HBox>
    </top>
 </BorderPane>

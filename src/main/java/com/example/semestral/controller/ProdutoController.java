@@ -9,6 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.sourceforge.barbecue.Barcode;
+import net.sourceforge.barbecue.BarcodeException;
+import net.sourceforge.barbecue.BarcodeFactory;
+import net.sourceforge.barbecue.BarcodeImageHandler;
+import net.sourceforge.barbecue.output.OutputException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,15 +24,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import net.sourceforge.barbecue.Barcode;
-import net.sourceforge.barbecue.BarcodeException;
-import net.sourceforge.barbecue.BarcodeFactory;
-import net.sourceforge.barbecue.BarcodeImageHandler;
-import net.sourceforge.barbecue.output.OutputException;
-
 
 import static com.example.semestral.controller.ProdutoModalController.produto;
-
+import static com.example.semestral.controller.ConfigModalController.barcodeDirectory;
 public class ProdutoController implements Initializable {
 
     @FXML
@@ -121,7 +120,7 @@ public class ProdutoController implements Initializable {
                 bc.setBarWidth(2);
 
                 //cria o arquivo
-                File file = new File("C:\\Users\\lucas\\Barcodes\\" + produto.produtoID + ".png");
+                File file = new File(barcodeDirectory + "\\" + produto.produtoID + ".png");
                 file.createNewFile();
 
                 //grava o conte[udoi do codigo de barras
