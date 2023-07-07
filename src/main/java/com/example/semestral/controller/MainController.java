@@ -48,11 +48,6 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void compras() throws IOException {
-        HelloApplication.setRoot("compras-view");
-    }
-
-    @FXML
     public void sair() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sair?");

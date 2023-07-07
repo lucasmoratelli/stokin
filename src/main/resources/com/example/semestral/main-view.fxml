@@ -55,12 +55,6 @@
                   <Font name="Verdana Bold" size="24.0" />
                </font>
             </Button>
-            <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="20.0" visible="false" />
-            <Button fx:id="compras" mnemonicParsing="false" onAction="#compras" prefHeight="60.0" prefWidth="220.0" style="-fx-background-color: #ffd555;" text="Compras">
-               <font>
-                  <Font name="Verdana Bold" size="24.0" />
-               </font>
-            </Button>
          </HBox>
       </VBox>
    </center>
