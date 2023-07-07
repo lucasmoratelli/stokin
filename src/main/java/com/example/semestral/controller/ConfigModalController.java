@@ -16,7 +16,8 @@ import java.util.ResourceBundle;
 
 public class ConfigModalController implements Initializable {
     public static File barcodeDirectory;
-    public static File qrCodeDirectory;
+    @FXML
+    Label labelQRCode;
     @FXML
     Label labelBarcode;
     @FXML
@@ -28,28 +29,18 @@ public class ConfigModalController implements Initializable {
         ConfigDAO configDAO = new ConfigDAO();
         configDAO.configBarcode(barcodeParameter);
     }
-
-    @FXML
-    public void QRCodeConfig() throws SQLException {
-        Stage stage = new Stage();
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        qrCodeDirectory = directoryChooser.showDialog(stage);
-        String qrCodeParameter = String.valueOf(qrCodeDirectory);
-        ConfigDAO configDAO = new ConfigDAO();
-        configDAO.configQRCode(qrCodeParameter);
-    }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ConfigDAO configDAO = new ConfigDAO();
+
+        List<String> configs;
         try {
-            List<String> configs = configDAO.getConfigs();
-            ConfigModalController.barcodeDirectory = new File(configs.get(0));
-//            ConfigModalController.qrCodeDirectory = new File(configs.get(1));
+            configs = configDAO.getConfigs();
         } catch (SQLException e) {
-            System.out.println(e);
+            throw new RuntimeException(e);
         }
+        ConfigModalController.barcodeDirectory = new File(configs.get(0));
+
         labelBarcode.setText(String.valueOf(barcodeDirectory));
     }
 }

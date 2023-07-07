@@ -2,8 +2,6 @@ package com.example.semestral.controller;
 
 import com.example.semestral.model.Notificacao;
 import com.example.semestral.model.NotificacaoDAO;
-import com.example.semestral.model.Produto;
-import com.example.semestral.model.ProdutoDAO;
 import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

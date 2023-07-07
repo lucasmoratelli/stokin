@@ -2,7 +2,6 @@ package com.example.semestral.controller;
 
 import com.example.semestral.AcessLevelSingleton;
 import com.example.semestral.HelloApplication;
-import com.example.semestral.QRCodeGenerator;
 import com.example.semestral.model.ConfigDAO;
 import com.example.semestral.model.Produto;
 import com.example.semestral.model.ProdutoDAO;
@@ -11,8 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import net.glxn.qrgen.QRCode;
-import net.glxn.qrgen.image.ImageType;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
 import net.sourceforge.barbecue.BarcodeFactory;
@@ -22,14 +19,12 @@ import net.sourceforge.barbecue.output.OutputException;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static com.example.semestral.controller.ProdutoModalController.produto;
 import static com.example.semestral.controller.ConfigModalController.barcodeDirectory;
-import static com.example.semestral.controller.ConfigModalController.qrCodeDirectory;
 public class ProdutoController implements Initializable {
 
     @FXML
@@ -80,6 +75,9 @@ public class ProdutoController implements Initializable {
     @FXML
     TextField pesquisaField;
 
+    @FXML
+    Button cancelSearch;
+
     //Essa parte é executada ao iniciar a classe
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -99,7 +97,7 @@ public class ProdutoController implements Initializable {
         colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
         colunaQuantidadeMinima.setCellValueFactory(new PropertyValueFactory<>("quantidadeMinima"));
 
-        //Pega os itens armazenados no BD e coloca eles na tabela
+        //Pega os itens armazenados no BD e coloca na tabela
         ProdutoDAO produtoDAO = new ProdutoDAO();
         try {
             List<Produto> produtos = produtoDAO.getAll();
@@ -108,14 +106,16 @@ public class ProdutoController implements Initializable {
             throw new RuntimeException(e);
         }
         ConfigDAO configDAO = new ConfigDAO();
-        try {
-            List<String> configs = configDAO.getConfigs();
-            ConfigModalController.barcodeDirectory = new File(configs.get(0));
-//            ConfigModalController.qrCodeDirectory = new File(configs.get(1));
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
 
+        List<String> configs;
+        try {
+            configs = configDAO.getConfigs();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        ConfigModalController.barcodeDirectory = new File(configs.get(0));
+        pesquisaField.textProperty().addListener((o, oldValue, newValue) -> pesquisaField.setText(newValue.replaceAll("[^\\d.]", "")));
+        searchButtom.setDisable(true);
 
     }
     public void desabilitaPesquisa() {
@@ -144,9 +144,8 @@ public class ProdutoController implements Initializable {
 
                 //cria o arquivo
                 File file = new File(barcodeDirectory + "\\" + produto.produtoID + ".png");
-                file.createNewFile();
 
-                //grava o conte[udoi do codigo de barras
+                //grava o conteudo do codigo de barras
                 try (OutputStream outputStream = new FileOutputStream(file)) {
                     BarcodeImageHandler.writePNG(bc, outputStream);
                 }
@@ -238,5 +237,31 @@ public class ProdutoController implements Initializable {
     @FXML
     public void pesquisa() {
 
+        tabelaProdutos.getItems().clear();
+
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        try {
+            String produtoPesquisado = pesquisaField.getText();
+            List<Produto> produtos = produtoDAO.search(Integer.parseInt(produtoPesquisado));
+            tabelaProdutos.getItems().addAll(produtos);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        cancelSearch.setVisible(true);
+        novo.setDisable(true);
+    }
+    public void setCancelSearch() {
+        tabelaProdutos.getItems().clear();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        try {
+            List<Produto> produtos = produtoDAO.getAll();
+            tabelaProdutos.getItems().addAll(produtos);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        pesquisaField.setText("");
+        cancelSearch.setVisible(false);
+        searchButtom.setDisable(true);
+        novo.setDisable(false);
     }
 }

@@ -36,13 +36,13 @@ public class ProdutoDAO {
         }
     }
 
-    public List<Produto> search() throws SQLException {
+    public List<Produto> search(int produtoID) throws SQLException {
 
         String sql = "select * from produtos where produtoID = ?"; //código sql
-        //conecta ao BD
-        try(Statement statement = ConnectionSingleton.getConnection().createStatement()) {
-
-            try (ResultSet rs = statement.executeQuery(sql)) {
+        try (PreparedStatement preparedStatement = ConnectionSingleton.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            //define os dados inseridos em cada campo da tabela produtos no BD
+            preparedStatement.setInt(1, produtoID);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
                 List<Produto> produtos = new ArrayList<>();
                 //enquanto o cursor do 'rs.next' conseguir se mover para frente ele executa esse laço 'while' e vai adicionando todos os produtos do BD na tabela
                 while (rs.next()) {

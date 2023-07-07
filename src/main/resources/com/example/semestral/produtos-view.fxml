@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -19,47 +18,76 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.ProdutoController">
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
-         <AnchorPane prefHeight="100.0" prefWidth="692.0" HBox.hgrow="ALWAYS">
-            <children>
-               <Label layoutX="99.0" layoutY="28.0" text="Itens em Estoque" textFill="#ffd555">
-                  <font>
-                     <Font name="Verdana Bold" size="24.0" />
-                  </font>
-               </Label>
-               <ImageView fitHeight="110.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../../Images/stokinLogo.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </AnchorPane>
-         <Pane prefHeight="100.0" prefWidth="99.0" HBox.hgrow="NEVER">
-            <Button layoutX="29.0" layoutY="28.0" mnemonicParsing="false" onAction="#voltar" prefHeight="44.0" prefWidth="41.0" text="Button">
-               <effect>
-                  <ImageInput>
-                     <source>
-                        <Image url="@../../../Images/return.png" />
-                     </source>
-                  </ImageInput>
-               </effect>
+    <top>
+        <Pane prefHeight="100.0" prefWidth="998.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <TextField fx:id="pesquisaField" layoutX="14.0" layoutY="38.0" onKeyTyped="#desabilitaPesquisa"
+                       prefHeight="25.0" prefWidth="159.0" promptText="Insira o código do produto"/>
+            <Button fx:id="cancelSearch" layoutX="148.0" layoutY="38.0" mnemonicParsing="false"
+                    onAction="#setCancelSearch" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: null;"
+                    text="x" visible="false">
+                <font>
+                    <Font name="Corbel Light" size="12.0"/>
+                </font>
             </Button>
-         </Pane>
-      </HBox>
-   </bottom>
-   <right>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Button fx:id="novo" mnemonicParsing="false" onAction="#novo" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="Novo">
-            <font>
-               <Font name="Verdana Bold" size="18.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
+            <Button fx:id="searchButtom" layoutX="184.0" layoutY="38.0" mnemonicParsing="false" onAction="#pesquisa"
+                    style="-fx-background-color: #ffd555;" text="Pesquisar"/>
+        </Pane>
+    </top>
+    <bottom>
+        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                <Label layoutX="14.0" layoutY="35.0" text="Itens em Estoque" textFill="#ffd555">
+                    <font>
+                        <Font name="Verdana Bold" size="24.0"/>
+                    </font>
+                </Label>
+            </Pane>
+            <Pane prefHeight="100.0" prefWidth="99.0">
+                <Button layoutX="29.0" layoutY="28.0" mnemonicParsing="false" onAction="#voltar" prefHeight="44.0" prefWidth="41.0" text="Button">
+                    <effect>
+                        <ImageInput>
+                            <source>
+                                <Image url="@../../../Images/return.png" />
+                            </source>
+                        </ImageInput>
+                    </effect>
+                </Button>
+            </Pane>
+        </HBox>
+    </bottom>
+    <right>
+        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Button fx:id="novo" mnemonicParsing="false" onAction="#novo" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="Novo">
+                <font>
+                    <Font name="Verdana Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            <Separator prefHeight="20.0" prefWidth="282.0" visible="false" />
+            <Button fx:id="editar" disable="true" mnemonicParsing="false" onAction="#editar" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="Editar">
+                <font>
+                    <Font name="Verdana Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
+            <Button fx:id="excluir" disable="true" mnemonicParsing="false" onAction="#excluir" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ff0000;" text="Excluir">
+                <font>
+                    <Font name="Verdana Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
          <Separator prefHeight="20.0" prefWidth="282.0" visible="false" />
-         <Button fx:id="editar" disable="true" mnemonicParsing="false" onAction="#editar" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="Editar">
+         <Button fx:id="entraSaiButtom" disable="true" mnemonicParsing="false" onAction="#entraSaiEstoque" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="+ / -">
             <font>
                <Font name="Verdana Bold" size="18.0" />
             </font>
@@ -67,64 +95,36 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Button>
-         <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
-         <Button fx:id="excluir" disable="true" mnemonicParsing="false" onAction="#excluir" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ff0000;" text="Excluir">
-            <font>
-               <Font name="Verdana Bold" size="18.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
-         <Separator prefHeight="20.0" prefWidth="282.0" visible="false" />
-         <Button fx:id="entraSaiButtom" disable="true" mnemonicParsing="false" onAction="#entraSaiEstoque" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #ffd555;" text="+/-">
-            <font>
-               <Font name="Verdana Bold" size="25.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
-      </VBox>
-   </right>
+        </VBox>
+    </right>
    <center>
-      <TableView fx:id="tabelaProdutos" onMouseClicked="#habilitarBotoes" onSort="#habilitarBotoes" BorderPane.alignment="CENTER">
-        <columns>
-            <TableColumn fx:id="colunaProdutoID" editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Código" />
-            <TableColumn fx:id="colunaMarca" editable="false" prefWidth="125.0" resizable="false" text="Marca" visible="false" />
-          <TableColumn fx:id="colunaNomeProduto" editable="false" maxWidth="1000.0" minWidth="200.0" prefWidth="200.0" text="Produto" />
-          <TableColumn fx:id="colunaDescricao" editable="false" minWidth="-1.0" prefWidth="500.0" text="Descrição" visible="false" />
-            <TableColumn fx:id="colunaPreco" editable="false" maxWidth="100.0" minWidth="50.0" prefWidth="50.0" text="Preço" />
-            <TableColumn fx:id="colunaQuantidade" editable="false" maxWidth="100.0" minWidth="50.0" prefWidth="50.0" text="Qtd" />
-            <TableColumn fx:id="colunaFornecedorID" editable="false" prefWidth="150.0" text="Código Fornecedor" visible="false" />
-            <TableColumn fx:id="colunaUnidadeMedida" editable="false" maxWidth="100.0" minWidth="50.0" prefWidth="50.0" text="U.M." />
-            <TableColumn fx:id="colunaQuantidadeMinima" editable="false" prefWidth="150.0" text="Qtd Mínima" visible="false" />
-        </columns>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <TableView fx:id="tabelaProdutos" onMouseClicked="#habilitarBotoes" onSort="#habilitarBotoes"
+                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0">
+               <columns>
+                   <TableColumn fx:id="colunaProdutoID" editable="false" prefWidth="100.0" text="Código"/>
+                   <TableColumn fx:id="colunaMarca" editable="false" prefWidth="125.0" resizable="false" text="Marca"
+                                visible="false"/>
+                   <TableColumn fx:id="colunaNomeProduto" editable="false" maxWidth="10000.0" minWidth="-1.0"
+                                prefWidth="300.0" text="Produto"/>
+                   <TableColumn fx:id="colunaDescricao" editable="false" minWidth="-1.0" prefWidth="500.0"
+                                text="Descrição" visible="false"/>
+                   <TableColumn fx:id="colunaPreco" editable="false" maxWidth="3000.0" minWidth="-1.0" prefWidth="75.0"
+                                text="Preço"/>
+                   <TableColumn fx:id="colunaQuantidade" editable="false" maxWidth="3000.0" minWidth="-Infinity"
+                                prefWidth="50.0" text="Qtd"/>
+                   <TableColumn fx:id="colunaFornecedorID" editable="false" prefWidth="150.0" text="Código Fornecedor"
+                                visible="false"/>
+                   <TableColumn fx:id="colunaUnidadeMedida" editable="false" prefWidth="75.0" text="U.M."
+                                visible="false"/>
+                   <TableColumn fx:id="colunaQuantidadeMinima" editable="false" maxWidth="3000.0" prefWidth="150.0"
+                                text="Qtd Mínima"/>
+               </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+           </TableView>
+       </AnchorPane>
    </center>
-   <top>
-      <AnchorPane prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="pesquisaField" layoutX="21.0" layoutY="24.0" onKeyPressed="#desabilitaPesquisa" onKeyTyped="#desabilitaPesquisa" prefHeight="30.0" prefWidth="214.0" promptText="Insira o código do produto" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="564.6" />
-            <Button fx:id="searchButtom" disable="true" layoutX="238.0" layoutY="23.0" mnemonicParsing="false" onAction="#pesquisa" prefHeight="32.0" prefWidth="32.0" AnchorPane.rightAnchor="527.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <ImageInput>
-                     <source>
-                        <Image url="../../../Images/search.png" />
-                     </source>
-                  </ImageInput>
-               </effect>
-            </Button>
-         </children>
-      </AnchorPane>
-   </top>
 </BorderPane>
