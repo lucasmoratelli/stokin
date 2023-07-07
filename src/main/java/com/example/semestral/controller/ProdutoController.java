@@ -74,6 +74,12 @@ public class ProdutoController implements Initializable {
     @FXML
     Button entraSaiButtom;
 
+    @FXML
+    Button searchButtom;
+
+    @FXML
+    TextField pesquisaField;
+
     //Essa parte é executada ao iniciar a classe
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -112,7 +118,13 @@ public class ProdutoController implements Initializable {
 
 
     }
+    public void desabilitaPesquisa() {
 
+        boolean search;
+        search = pesquisaField.getText().isEmpty();
+        searchButtom.setDisable(search);
+
+    }
     //método para adicionar novo produto na tabela
     @FXML
     public void novo() throws IOException, SQLException, OutputException, BarcodeException {

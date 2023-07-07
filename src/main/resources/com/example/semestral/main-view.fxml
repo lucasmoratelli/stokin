@@ -13,16 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.MainController">
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
          <Pane prefHeight="200.0" prefWidth="200.0">
-            <Label layoutX="22.0" layoutY="75.0" text="Sair">
-               <font>
-                  <Font name="Verdana Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#sair" prefHeight="73.0" prefWidth="44.0" text="Button">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="22.0" mnemonicParsing="false" onAction="#sair" prefHeight="54.0" prefWidth="56.0" text="Button">
                <effect>
                   <ImageInput>
                      <source>
@@ -78,17 +73,34 @@
             </font>
          </Label>
          <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="0.0" visible="false" HBox.hgrow="ALWAYS" />
-         <Button mnemonicParsing="false" onAction="#abrirNotificacoes" prefHeight="43.0" prefWidth="40.0" text="Button" HBox.hgrow="NEVER">
-            <effect>
-               <ImageInput>
-                  <source>
-                     <Image url="@../../../Images/notification.png" />
-                  </source>
-               </ImageInput>
-            </effect>
-         </Button>
+         <Pane prefHeight="100.0" prefWidth="64.0">
+            <children>
+               <Label fx:id="notificando2" layoutX="40.0" layoutY="16.0" prefHeight="29.0" prefWidth="21.0" rotate="-11.3" text="))" textFill="#ffb553">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+               <Button fx:id="notificacao" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="31.0" mnemonicParsing="false" onAction="#abrirNotificacoes" prefHeight="43.0" prefWidth="39.0" text="Button" textAlignment="CENTER">
+                  <effect>
+                     <ImageInput>
+                        <source>
+                           <Image url="@../../../Images/notification.png" />
+                        </source>
+                     </ImageInput>
+                  </effect>
+                  <padding>
+                     <Insets left="-20.0" />
+                  </padding>
+               </Button>
+               <Label fx:id="notificando1" layoutX="2.0" layoutY="18.0" prefHeight="29.0" prefWidth="21.0" rotate="11.3" text="((" textFill="#ffb553">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
          <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="100.0" prefWidth="42.0" visible="false" HBox.hgrow="NEVER" />
-         <Button mnemonicParsing="false" onAction="#config" prefHeight="43.0" prefWidth="40.0" text="Button">
+         <Button fx:id="config" mnemonicParsing="false" onAction="#config" prefHeight="43.0" prefWidth="40.0" text="Button">
             <effect>
                <ImageInput>
                   <source>

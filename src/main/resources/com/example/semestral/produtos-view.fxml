@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.ProdutoController">
+<BorderPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.ProdutoController">
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
          <AnchorPane prefHeight="100.0" prefWidth="692.0" HBox.hgrow="ALWAYS">
@@ -111,16 +111,18 @@
    <top>
       <AnchorPane prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="pesquisaField" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="214.0" promptText="Insira o código do produto" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="564.6" />
-            <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="241.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="527.0">
-               <image>
-                  <Image url="@../../../Images/search.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="238.0" layoutY="21.0" mnemonicParsing="false" onAction="#pesquisa" opacity="0.0" prefHeight="37.0" prefWidth="38.0" text="Button" AnchorPane.rightAnchor="523.6">
+            <TextField fx:id="pesquisaField" layoutX="21.0" layoutY="24.0" onKeyPressed="#desabilitaPesquisa" onKeyTyped="#desabilitaPesquisa" prefHeight="30.0" prefWidth="214.0" promptText="Insira o código do produto" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="564.6" />
+            <Button fx:id="searchButtom" disable="true" layoutX="238.0" layoutY="23.0" mnemonicParsing="false" onAction="#pesquisa" prefHeight="32.0" prefWidth="32.0" AnchorPane.rightAnchor="527.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="../../../Images/search.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
          </children>
       </AnchorPane>

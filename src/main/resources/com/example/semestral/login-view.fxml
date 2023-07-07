@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.LoginController">
    <top>
       <Pane prefHeight="100.0" prefWidth="1400.0" style="-fx-background-color: #355186;" BorderPane.alignment="CENTER">
          <AnchorPane layoutY="-9.0" prefHeight="85.0" prefWidth="195.0">
@@ -54,13 +54,13 @@
             </effect>
          </Label>
          <Separator prefHeight="20.0" prefWidth="600.0" visible="false" VBox.vgrow="ALWAYS" />
-         <TextField fx:id="usuarioField" onKeyReleased="#desabilitaLogin" prefHeight="50.0" prefWidth="1366.0" promptText="Usuário" VBox.vgrow="SOMETIMES">
+         <TextField fx:id="usuarioField" onKeyTyped="#desabilitaLogin" prefHeight="50.0" prefWidth="1366.0" promptText="Usuário" VBox.vgrow="SOMETIMES">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
          <Separator opacity="0.0" prefHeight="20.0" prefWidth="1400.0" VBox.vgrow="ALWAYS" />
-         <PasswordField fx:id="senhaField" onKeyReleased="#desabilitaLogin" prefHeight="50.0" prefWidth="800.0" promptText="Senha" VBox.vgrow="SOMETIMES">
+         <PasswordField fx:id="senhaField" onKeyTyped="#desabilitaLogin" prefHeight="50.0" prefWidth="800.0" promptText="Senha" VBox.vgrow="SOMETIMES">
             <font>
                <Font size="18.0" />
             </font>

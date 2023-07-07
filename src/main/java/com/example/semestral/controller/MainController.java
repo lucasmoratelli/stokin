@@ -3,12 +3,11 @@ package com.example.semestral.controller;
 import com.example.semestral.AcessLevelSingleton;
 import com.example.semestral.HelloApplication;
 import com.example.semestral.model.ConfigDAO;
+import com.example.semestral.model.Notificacao;
+import com.example.semestral.model.NotificacaoDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +24,18 @@ public class MainController implements Initializable {
 
     @FXML
     Button compras;
+
+    @FXML
+    Button notificacao;
+
+    @FXML
+    Button config;
+
+    @FXML
+    Label notificando1;
+
+    @FXML
+    Label notificando2;
 
     @FXML
     public void estoque() throws IOException {
@@ -55,6 +66,20 @@ public class MainController implements Initializable {
     @FXML
     public void abrirNotificacoes() throws IOException {
         HelloApplication.showModal("notificacao-modal-view");
+        try {
+            NotificacaoDAO notificacaoDAO = new NotificacaoDAO();
+
+            List<Notificacao> notificacoes = notificacaoDAO.getAll();
+            if (notificacoes.isEmpty()) {
+                notificando1.setVisible(false);
+                notificando2.setVisible(false);
+            } else {
+                notificando1.setVisible(true);
+                notificando2.setVisible(true);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
     public void config() throws IOException {
@@ -66,6 +91,22 @@ public class MainController implements Initializable {
         if(AcessLevelSingleton.canAcess()) {
             forncecedor.setVisible(false);
             compras.setVisible(false);
+            notificacao.setVisible(false);
+            config.setVisible(false);
+        }
+        try {
+            NotificacaoDAO notificacaoDAO = new NotificacaoDAO();
+
+            List<Notificacao> notificacoes = notificacaoDAO.getAll();
+            if (notificacoes.isEmpty()) {
+                notificando1.setVisible(false);
+                notificando2.setVisible(false);
+            } else {
+                notificando1.setVisible(true);
+                notificando2.setVisible(true);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

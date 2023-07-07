@@ -21,7 +21,7 @@ public class LoginController {
     @FXML
     Button buttomEntrar;
     @FXML
-    public void entrar() throws IOException, SQLException {
+    public void entrar() {
 
         try {
             Usuario usuarioLogin = new Usuario(usuarioField.getText(), senhaField.getText());

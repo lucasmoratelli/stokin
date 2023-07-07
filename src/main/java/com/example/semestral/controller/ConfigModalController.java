@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -41,6 +42,14 @@ public class ConfigModalController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ConfigDAO configDAO = new ConfigDAO();
+        try {
+            List<String> configs = configDAO.getConfigs();
+            ConfigModalController.barcodeDirectory = new File(configs.get(0));
+//            ConfigModalController.qrCodeDirectory = new File(configs.get(1));
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
         labelBarcode.setText(String.valueOf(barcodeDirectory));
     }
 }
