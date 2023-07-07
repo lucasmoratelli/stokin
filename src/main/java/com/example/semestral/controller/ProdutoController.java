@@ -2,6 +2,8 @@ package com.example.semestral.controller;
 
 import com.example.semestral.AcessLevelSingleton;
 import com.example.semestral.HelloApplication;
+import com.example.semestral.QRCodeGenerator;
+import com.example.semestral.model.ConfigDAO;
 import com.example.semestral.model.Produto;
 import com.example.semestral.model.ProdutoDAO;
 import javafx.beans.binding.BooleanBinding;
@@ -9,24 +11,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
 import net.sourceforge.barbecue.BarcodeFactory;
 import net.sourceforge.barbecue.BarcodeImageHandler;
 import net.sourceforge.barbecue.output.OutputException;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static com.example.semestral.controller.ProdutoModalController.produto;
 import static com.example.semestral.controller.ConfigModalController.barcodeDirectory;
+import static com.example.semestral.controller.ConfigModalController.qrCodeDirectory;
 public class ProdutoController implements Initializable {
 
     @FXML
@@ -98,6 +101,14 @@ public class ProdutoController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        ConfigDAO configDAO = new ConfigDAO();
+        try {
+            List<String> configs = configDAO.getConfigs();
+            ConfigModalController.barcodeDirectory = new File(configs.get(0));
+//            ConfigModalController.qrCodeDirectory = new File(configs.get(1));
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
 
 
     }
@@ -127,6 +138,7 @@ public class ProdutoController implements Initializable {
                 try (OutputStream outputStream = new FileOutputStream(file)) {
                     BarcodeImageHandler.writePNG(bc, outputStream);
                 }
+
             } else {
                 //exibe mensagem de erro se o fornecedor não existir
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

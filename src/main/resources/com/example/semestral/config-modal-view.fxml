@@ -8,11 +8,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="250.0" prefWidth="360.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.ConfigModalController">
+<AnchorPane prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #102040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.semestral.controller.ConfigModalController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#355186" height="62.0" layoutX="10.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="23.0" mnemonicParsing="false" onAction="#barcodeConfig" prefHeight="43.0" prefWidth="43.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#355186" height="62.0" layoutX="10.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="350.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="382.0" layoutY="23.0" mnemonicParsing="false" onAction="#barcodeConfig" prefHeight="43.0" prefWidth="43.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -24,14 +23,14 @@
             </ImageInput>
          </effect>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#355186" height="62.0" layoutX="10.0" layoutY="94.0" opacity="0.68" stroke="BLACK" strokeType="INSIDE" width="282.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#355186" height="62.0" layoutX="10.0" layoutY="174.0" opacity="0.68" stroke="BLACK" strokeType="INSIDE" width="282.0" />
-      <Label layoutX="24.0" layoutY="32.0" text="Diretório dos Códigos de Barras" textFill="#ffd555">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#355186" height="62.0" layoutX="10.0" layoutY="94.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="350.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#355186" height="62.0" layoutX="10.0" layoutY="174.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="350.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Diretório dos Códigos de Barras" textFill="#ffd555">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="302.0" layoutY="103.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="382.0" layoutY="103.0" mnemonicParsing="false" onAction="#QRCodeConfig" prefHeight="43.0" prefWidth="43.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -43,7 +42,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="302.0" layoutY="183.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="382.0" layoutY="183.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -55,5 +54,20 @@
             </ImageInput>
          </effect>
       </Button>
+      <Label layoutX="14.0" layoutY="95.0" text="Diretório dos QR codes" textFill="#ffd555" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelBarcode" layoutX="14.0" layoutY="37.0" prefHeight="27.0" prefWidth="342.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelQRCode" layoutX="14.0" layoutY="120.0" prefHeight="27.0" prefWidth="342.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

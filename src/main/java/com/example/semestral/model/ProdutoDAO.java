@@ -36,12 +36,39 @@ public class ProdutoDAO {
         }
     }
 
+    public List<Produto> search() throws SQLException {
+
+        String sql = "select * from produtos where produtoID = ?"; //código sql
+        //conecta ao BD
+        try(Statement statement = ConnectionSingleton.getConnection().createStatement()) {
+
+            try (ResultSet rs = statement.executeQuery(sql)) {
+                List<Produto> produtos = new ArrayList<>();
+                //enquanto o cursor do 'rs.next' conseguir se mover para frente ele executa esse laço 'while' e vai adicionando todos os produtos do BD na tabela
+                while (rs.next()) {
+                    Produto produto = new Produto();
+                    produto.produtoID = rs.getInt(1);
+                    produto.fornecedorID = rs.getInt(2);
+                    produto.nomeProduto = rs.getString(3);
+                    produto.marca = rs.getString(4);
+                    produto.descricao = rs.getString(5);
+                    produto.quantidade = rs.getInt(6);
+                    produto.unidadeMedida = rs.getString(7);
+                    produto.preco = rs.getDouble(8);
+                    produto.quantidadeMinima = rs.getInt(9);
+                    produtos.add(produto);
+                }
+                return produtos;
+            }
+        }
+    }
+
     //método para inserir dados no BD
     public void insert(Produto novoProduto) throws SQLException {
         String sql = "insert into produtos (produtoID, fornecedorID, nomeproduto, marca, descricao, quantidade, unidademedida, preco, quantidademinima) values (?, ?, ?, ?, ?, ?, ?, ?, ?);"; //código sql
         //conecta ao BD
         try (PreparedStatement preparedStatement = ConnectionSingleton.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            //define os dados inseridos em cada campo da tabela fornecedor no BD
+            //define os dados inseridos em cada campo da tabela produtos no BD
             preparedStatement.setInt(1, novoProduto.produtoID);
             preparedStatement.setInt(2, novoProduto.fornecedorID);
             preparedStatement.setString(3, novoProduto.nomeProduto);

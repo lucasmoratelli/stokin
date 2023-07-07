@@ -2,6 +2,7 @@ package com.example.semestral.controller;
 
 import com.example.semestral.AcessLevelSingleton;
 import com.example.semestral.HelloApplication;
+import com.example.semestral.model.ConfigDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -9,8 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Separator;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
