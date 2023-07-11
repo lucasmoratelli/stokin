@@ -143,7 +143,7 @@ public class ProdutoController implements Initializable {
                 bc.setBarWidth(2);
 
                 //cria o arquivo
-                File file = new File(barcodeDirectory + "\\" + produto.produtoID + ".png");
+                File file = new File(barcodeDirectory + "\\" + produto.nomeProduto + ".png");
 
                 //grava o conteudo do codigo de barras
                 try (OutputStream outputStream = new FileOutputStream(file)) {
