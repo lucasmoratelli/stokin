@@ -70,7 +70,7 @@
    </right>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <TableView fx:id="tabelaProdutos" onMouseClicked="#habilitarBotoes" onSort="#habilitarBotoes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <TableView fx:id="tabelaFornecedores" onMouseClicked="#habilitarBotoes" onSort="#habilitarBotoes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columns>
                <TableColumn fx:id="colunaFornecedorID" editable="false" maxWidth="2000.0" text="Código" />
                <TableColumn fx:id="colunaNomeFornecedor" editable="false" maxWidth="8000.0" minWidth="-1.0" prefWidth="317.5999755859375" text="Fornecedor" />

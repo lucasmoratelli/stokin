@@ -85,7 +85,6 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(AcessLevelSingleton.canAcess()) {
             forncecedor.setVisible(false);
-            compras.setVisible(false);
             notificacao.setVisible(false);
             config.setVisible(false);
         }

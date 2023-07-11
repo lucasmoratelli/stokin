@@ -11,6 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -68,6 +70,7 @@ public class FornecedorController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     //método que desabilita botões excluir e editar enquanto nenhum produto da tabela estiver selecionado
@@ -103,7 +106,7 @@ public class FornecedorController implements Initializable {
         fornecedor = null; //define variável global 'produto' como nula para prevenção de bugs
         Fornecedor fornecedorSelecionado = tabelaFornecedores.getSelectionModel().getSelectedItem();
         fornecedor = fornecedorSelecionado; //coloca essa variável dentro da váriável global produto
-        HelloApplication.showModal("produto-modal-view"); //abre o modal de edição de produto
+        HelloApplication.showModal("fornecedor-modal-view"); //abre o modal de edição de produto
 
         //edita o fornecedor na tabela e no BD
         fornecedorSelecionado.fornecedorID = fornecedor.fornecedorID;
@@ -122,16 +125,23 @@ public class FornecedorController implements Initializable {
     public void excluir() throws SQLException {
         Fornecedor fornecedorSelecionado = tabelaFornecedores.getSelectionModel().getSelectedItem(); //define uma váriavel Produto para inserir o item selecionado
         //gera uma confirmação de exclusão
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmação de Exclusão");
-        alert.setHeaderText(fornecedorSelecionado.nomeFornecedor);
-        alert.setContentText("Deseja excluir esse fornecedor?");
-        Optional<ButtonType> result = alert.showAndWait();
+        Alert alertDelete = new Alert(Alert.AlertType.CONFIRMATION);
+        alertDelete.setTitle("Confirmação de Exclusão");
+        alertDelete.setHeaderText(fornecedorSelecionado.nomeFornecedor);
+        alertDelete.setContentText("Deseja excluir esse fornecedor?");
+        Optional<ButtonType> result = alertDelete.showAndWait();
         //se o usuário clicar em ok, remove o produto selecionado da tabela e BD
         if (result.get() == ButtonType.OK) {
-            tabelaFornecedores.getItems().remove(fornecedorSelecionado);
-            FornecedorDAO fornecedorDAO = new FornecedorDAO();
-            fornecedorDAO.delete(fornecedorSelecionado);
+            try {
+                FornecedorDAO fornecedorDAO = new FornecedorDAO();
+                fornecedorDAO.delete(fornecedorSelecionado);
+                tabelaFornecedores.getItems().remove(fornecedorSelecionado);
+            } catch (Exception e) {
+                Alert alertError = new Alert(Alert.AlertType.CONFIRMATION);
+                alertError.setHeaderText("Você não pode excluir esse fornecedor!");
+                alertError.setContentText("Ainda existem produtos desse fornecedor cadastrados");
+                alertError.showAndWait();
+            }
         }
     }
 }

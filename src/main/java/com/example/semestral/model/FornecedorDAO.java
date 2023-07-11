@@ -66,18 +66,19 @@ public class FornecedorDAO {
     }
     public void update(Fornecedor fornecedorSelecionado) throws SQLException {
 
-        String sql = "update fornecedor set fornecedorID = ?, nomeFornecedor = ?, CNPJ = ?, telefone = ?, site = ?, pais = ? where fornecedorID = ?"; //código sql
+        String sql = "update fornecedor set nomeFornecedor = ?, CNPJ = ?, telefone = ?, site = ?, pais = ? where fornecedorID = ?"; //código sql
 
         //conecta ao BD
         try (PreparedStatement preparedStatement = ConnectionSingleton.getConnection().prepareStatement(sql)) {
 
             //define os dados inseridos em cada campo da tabela fornecedor no BD
-            preparedStatement.setInt(1, fornecedorSelecionado.fornecedorID);
-            preparedStatement.setString(2, fornecedorSelecionado.nomeFornecedor);
-            preparedStatement.setString(3, fornecedorSelecionado.CNPJ);
-            preparedStatement.setString(4,fornecedorSelecionado.telefone);
-            preparedStatement.setString(5,fornecedorSelecionado.site);
-            preparedStatement.setString(6,fornecedorSelecionado.pais);
+            preparedStatement.setInt(6, fornecedorSelecionado.fornecedorID);
+            preparedStatement.setString(1, fornecedorSelecionado.nomeFornecedor);
+            preparedStatement.setString(2, fornecedorSelecionado.CNPJ);
+            preparedStatement.setString(3,fornecedorSelecionado.telefone);
+            preparedStatement.setString(4,fornecedorSelecionado.site);
+            preparedStatement.setString(5,fornecedorSelecionado.pais);
+
             preparedStatement.execute(); //executa o código sql
         }
     }

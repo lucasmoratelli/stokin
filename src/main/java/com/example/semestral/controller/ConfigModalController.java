@@ -28,6 +28,7 @@ public class ConfigModalController implements Initializable {
         String barcodeParameter = String.valueOf(barcodeDirectory);
         ConfigDAO configDAO = new ConfigDAO();
         configDAO.configBarcode(barcodeParameter);
+        labelBarcode.setText(barcodeParameter);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

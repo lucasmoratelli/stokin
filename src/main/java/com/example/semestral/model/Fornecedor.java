@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 
 public class Fornecedor {
 
+
+
     @FXML
     public int fornecedorID;
 

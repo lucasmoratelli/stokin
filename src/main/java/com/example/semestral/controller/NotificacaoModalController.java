@@ -50,6 +50,7 @@ public class NotificacaoModalController  implements Initializable{
             tabelaNotificacao.getItems().remove(notificacaoSelecionada);
             NotificacaoDAO notificacaoDAO = new NotificacaoDAO();
             notificacaoDAO.delete(notificacaoSelecionada);
+
         }
     }
     @FXML

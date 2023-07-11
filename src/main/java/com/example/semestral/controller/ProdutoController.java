@@ -188,7 +188,14 @@ public class ProdutoController implements Initializable {
             produtoSelecionado.quantidade = produto.quantidade;
             ProdutoDAO produtoDAO = new ProdutoDAO();
             produtoDAO.update(produto);
-            tabelaProdutos.refresh();
+            tabelaProdutos.getItems().clear();
+            ProdutoDAO produtoDAOEdit = new ProdutoDAO();
+            try {
+                List<Produto> produtos = produtoDAOEdit.getAll();
+                tabelaProdutos.getItems().addAll(produtos);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             //exibe mensagem de erro se o fornecedor não existir
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

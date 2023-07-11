@@ -43,6 +43,7 @@ public class LoginController {
 
             }
         } catch (Exception e) {
+            System.out.println(e);
             checkPasswordLabel.setText("Usuário e/ou Senha Incorretos!");
         }
     }
