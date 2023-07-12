@@ -26,7 +26,7 @@ public class ProdutoModalController implements Initializable {
     TextField marcaField;
 
     @FXML
-    TextField descricaoField;
+    TextArea descricaoField;
 
     @FXML
     TextField quantidadeField;

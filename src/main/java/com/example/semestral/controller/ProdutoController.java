@@ -10,12 +10,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.ImageInput;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
 import net.sourceforge.barbecue.BarcodeFactory;
 import net.sourceforge.barbecue.BarcodeImageHandler;
 import net.sourceforge.barbecue.output.OutputException;
 
+import javax.imageio.stream.ImageInputStream;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
@@ -77,6 +82,9 @@ public class ProdutoController implements Initializable {
 
     @FXML
     Button cancelSearch;
+
+    @FXML
+    ImageView barcodeView;
 
     //Essa parte é executada ao iniciar a classe
     @Override
@@ -207,11 +215,30 @@ public class ProdutoController implements Initializable {
 
     //método que desabilita botões excluir e editar enquanto nenhum produto da tabela estiver selecionado
     @FXML
-    public void habilitarBotoes() {
+    public void habilitarBotoes() throws BarcodeException, OutputException, FileNotFoundException {
         BooleanBinding algoSelecionado = tabelaProdutos.getSelectionModel().selectedItemProperty().isNull();
         excluir.disableProperty().bind(algoSelecionado);
         editar.disableProperty().bind(algoSelecionado);
         entraSaiButtom.disableProperty().bind(algoSelecionado);
+
+        Produto produtoSelecionado = tabelaProdutos.getSelectionModel().getSelectedItem();
+        if(produtoSelecionado != null) {
+            Barcode bc = BarcodeFactory.createCode128(String.valueOf(produtoSelecionado.produtoID));
+            bc.setBarHeight(60);
+            bc.setBarWidth(2);
+
+            //cria o arquivo
+            File file = new File("C:\\Users\\lucas\\GitHub\\stokin\\src\\main\\resources\\InternalImages\\barcodeView.png");
+
+            //grava o conteudo do codigo de barras
+            try (OutputStream outputStream = new FileOutputStream(file)) {
+                BarcodeImageHandler.writePNG(bc, outputStream);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Image image = new Image(String.valueOf(file));
+            barcodeView.setImage(image);
+        }
     }
 
     //método que exclui o item selecionado da tabela e BD
@@ -245,6 +272,7 @@ public class ProdutoController implements Initializable {
     public void pesquisa() {
 
         tabelaProdutos.getItems().clear();
+        barcodeView.setImage(null);
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
         try {
@@ -259,6 +287,7 @@ public class ProdutoController implements Initializable {
     }
     public void setCancelSearch() {
         tabelaProdutos.getItems().clear();
+        barcodeView.setImage(null);
         ProdutoDAO produtoDAO = new ProdutoDAO();
         try {
             List<Produto> produtos = produtoDAO.getAll();
