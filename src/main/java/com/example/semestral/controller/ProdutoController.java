@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sourceforge.barbecue.Barcode;
@@ -18,9 +17,6 @@ import net.sourceforge.barbecue.BarcodeException;
 import net.sourceforge.barbecue.BarcodeFactory;
 import net.sourceforge.barbecue.BarcodeImageHandler;
 import net.sourceforge.barbecue.output.OutputException;
-
-import javax.imageio.stream.ImageInputStream;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
@@ -144,18 +140,24 @@ public class ProdutoController implements Initializable {
         if(produto != null) {
             ProdutoDAO produtoDAO = new ProdutoDAO();
             if(produtoDAO.checkFornecedor(produto.fornecedorID)) {
-                tabelaProdutos.getItems().add(produto);
-                produtoDAO.insert(produto);
-                Barcode bc = BarcodeFactory.createCode128(String.valueOf(produto.produtoID));
-                bc.setBarHeight(60);
-                bc.setBarWidth(2);
+                if (!barcodeDirectory.toString().equals("null")) {
+                    tabelaProdutos.getItems().add(produto);
+                    produtoDAO.insert(produto);
+                    Barcode bc = BarcodeFactory.createCode128(String.valueOf(produto.produtoID));
+                    bc.setBarHeight(60);
+                    bc.setBarWidth(2);
+                    //cria o arquivo
+                    File file = new File(barcodeDirectory + "\\" + produto.nomeProduto + ".png");
 
-                //cria o arquivo
-                File file = new File(barcodeDirectory + "\\" + produto.nomeProduto + ".png");
-
-                //grava o conteudo do codigo de barras
-                try (OutputStream outputStream = new FileOutputStream(file)) {
-                    BarcodeImageHandler.writePNG(bc, outputStream);
+                    //grava o conteudo do codigo de barras
+                    try (OutputStream outputStream = new FileOutputStream(file)) {
+                        BarcodeImageHandler.writePNG(bc, outputStream);
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Informação");
+                    alert.setContentText("Você deve primeiramente acessar as configurações no menu principal e configurar o diretório dos códigos de barras!");
+                    alert.showAndWait();
                 }
 
             } else {
@@ -215,7 +217,7 @@ public class ProdutoController implements Initializable {
 
     //método que desabilita botões excluir e editar enquanto nenhum produto da tabela estiver selecionado
     @FXML
-    public void habilitarBotoes() throws BarcodeException, OutputException, FileNotFoundException {
+    public void habilitarBotoes() throws BarcodeException, OutputException {
         BooleanBinding algoSelecionado = tabelaProdutos.getSelectionModel().selectedItemProperty().isNull();
         excluir.disableProperty().bind(algoSelecionado);
         editar.disableProperty().bind(algoSelecionado);
@@ -227,17 +229,24 @@ public class ProdutoController implements Initializable {
             bc.setBarHeight(60);
             bc.setBarWidth(2);
 
-            //cria o arquivo
-            File file = new File("C:\\Users\\lucas\\GitHub\\stokin\\src\\main\\resources\\InternalImages\\barcodeView.png");
+            if (!barcodeDirectory.toString().equals("null")) {
+                //cria o arquivo
+                File file = new File(barcodeDirectory + "\\barcodeViewInSystem.png");
 
-            //grava o conteudo do codigo de barras
-            try (OutputStream outputStream = new FileOutputStream(file)) {
-                BarcodeImageHandler.writePNG(bc, outputStream);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                //grava o conteudo do codigo de barras
+                try (OutputStream outputStream = new FileOutputStream(file)) {
+                    BarcodeImageHandler.writePNG(bc, outputStream);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Image image = new Image(String.valueOf(file));
+                barcodeView.setImage(image);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Informação");
+                alert.setContentText("Você deve primeiramente acessar as configurações no menu principal e configurar o diretório dos códigos de barras!");
+                alert.showAndWait();
             }
-            Image image = new Image(String.valueOf(file));
-            barcodeView.setImage(image);
         }
     }
 
